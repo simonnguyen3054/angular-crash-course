@@ -1,12 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { TodosComponent } from './components/todos/todos.component';
 import { TodoItemComponent } from './components/todo-item/todo-item.component';
 import { TodoService } from './services/todo.service';
 import { HeaderComponent } from './components/layout/header/header.component';
+import { AddTodoComponent } from './components/add-todo/add-todo.component';
 
 
 @NgModule({
@@ -14,11 +16,13 @@ import { HeaderComponent } from './components/layout/header/header.component';
     AppComponent,
     TodosComponent,
     TodoItemComponent,
-    HeaderComponent
+    HeaderComponent,
+    AddTodoComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     TodoService
