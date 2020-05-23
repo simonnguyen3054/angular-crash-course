@@ -4,6 +4,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 
 import {Todo} from '../models/Todo'
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-type': 'application/json'
+  })
+}
+
 @Injectable()
 export class TodoService {
   todosUrl:string = 'https://jsonplaceholder.typicode.com/todos';
@@ -13,5 +19,11 @@ export class TodoService {
 
   getTodos():Observable<Todo[]> {
     return this.http.get<Todo[]>(`${this.todosUrl}${this.todoLimits}`);
+  }
+
+  //Toggle Completed
+  toggleCompleted(todo:Todo) {
+    const url = `${this.todosUrl}/${todo.id}`;
+    return this.http.put(url, todo, httpOptions);
   }
 }
